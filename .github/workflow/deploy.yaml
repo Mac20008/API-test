@@ -10,7 +10,7 @@ env:
   GKE_CLUSTER: cluster-1    # Add your cluster name here.
   GKE_ZONE: us-central1-c   # Add your cluster zone here.
   DEPLOYMENT_NAME: gke-test # Add your deployment name here.
-  IMAGE: static-site
+  IMAGE: jose-api
 
 jobs:
   setup-build-publish-deploy:
@@ -18,7 +18,10 @@ jobs:
     runs-on: ubuntu-latest
     # Prototype changes go here:
     environment: production
-
+    permissions:
+      contents: 'read'
+      id-token: 'write'
+      
     steps:
     - name: Checkout
       uses: actions/checkout@v3
